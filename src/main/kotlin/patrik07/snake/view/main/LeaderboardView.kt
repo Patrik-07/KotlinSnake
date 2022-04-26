@@ -1,4 +1,4 @@
-package patrik07.snake.view
+package patrik07.snake.view.main
 
 import javafx.geometry.Pos
 import javafx.scene.layout.HBox
@@ -40,7 +40,10 @@ class LeaderboardView : View() {
                     maxWidth = 100.0
                 }
                 setOnAction {
-                    replaceWith<MenuView>()
+                    replaceWith(
+                        MenuView::class,
+                        transition = ViewTransition.Metro(1.seconds)
+                    )
                 }
             }
         }

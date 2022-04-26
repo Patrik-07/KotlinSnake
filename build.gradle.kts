@@ -14,7 +14,7 @@ repositories {
 }
 
 application {
-    mainClassName = "com.example.MainKt"
+    mainClassName = "patrik07.snake.MainKt"
 }
 
 dependencies {

@@ -1,8 +1,10 @@
-package patrik07.snake.view
+package patrik07.snake.view.main
 
 import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.scene.text.Font
+import patrik07.snake.view.game.GameView
+import patrik07.snake.view.game.SaveView
 import tornadofx.*
 
 class MenuView : View() {
@@ -21,12 +23,16 @@ class MenuView : View() {
         vbox(10) {
             alignment = Pos.BASELINE_CENTER
 
-            button("Start") {
+            button("Play") {
                 vboxConstraints {
                     maxWidth = 100.0
                 }
                 setOnAction {
-                    replaceWith<GameView>()
+                    val w = find<GameView>().openModal()
+                    w?.isResizable = false
+                    w?.setOnCloseRequest {
+                        openInternalWindow<SaveView>()
+                    }
                 }
             }
             button("Leaderboard") {
@@ -34,7 +40,10 @@ class MenuView : View() {
                     maxWidth = 100.0
                 }
                 setOnAction {
-                    replaceWith<LeaderboardView>()
+                    replaceWith(
+                        LeaderboardView::class,
+                        transition = ViewTransition.Metro(1.seconds)
+                    )
                 }
             }
             button("Quit") {

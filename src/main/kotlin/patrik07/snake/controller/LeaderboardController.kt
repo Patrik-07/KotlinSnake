@@ -1,30 +1,18 @@
-package patrik07.snake
+package patrik07.snake.controller
 
-import javafx.stage.Stage
 import kotlinx.serialization.encodeToString
-import patrik07.snake.model.leaderboard.Leaderboard
-import patrik07.snake.view.MenuView
-import tornadofx.App
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeToSequence
+import patrik07.snake.model.leaderboard.Leaderboard
 import patrik07.snake.model.leaderboard.Player
+import tornadofx.*
 import java.io.ByteArrayInputStream
 import java.io.File
 
-class App: App(MenuView::class) {
+class LeaderboardController : Controller() {
     private val leaderboard = Leaderboard.instance
 
-    override fun start(stage: Stage) {
-        super.start(stage)
-        readPlayers()
-    }
-
-    override fun stop() {
-        super.stop()
-        savePlayers()
-    }
-
-    private fun readPlayers() {
+    fun readPlayers() {
         val players = Json.decodeToSequence<Player>(
             ByteArrayInputStream(
                 File("resources/players.json").readBytes()
@@ -36,7 +24,7 @@ class App: App(MenuView::class) {
         leaderboard.players.reverse()
     }
 
-    private fun savePlayers() {
+    fun savePlayers() {
         var jsonString = "["
 
         val players = leaderboard.players
