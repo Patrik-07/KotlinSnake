@@ -4,13 +4,7 @@ import patrik07.snake.model.game.gameobjects.*
 
 class Map(val rowCount: Int, val colCount: Int) {
     val map: Array<Array<GameObject>> = Array(rowCount) {
-        Array(colCount) { Empty(0, 0) }
-    }
-
-    init {
-        for (row in 0 until rowCount)
-            for (col in 0 until colCount)
-                map[row][col] = Empty(row, col)
+        Array(colCount) { Empty() }
     }
 
     /*

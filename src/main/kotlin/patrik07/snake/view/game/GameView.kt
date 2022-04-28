@@ -5,6 +5,7 @@ import javafx.animation.KeyFrame
 import javafx.animation.Timeline
 import javafx.geometry.HPos
 import javafx.geometry.Insets
+import javafx.geometry.Pos
 import javafx.geometry.VPos
 import javafx.scene.layout.*
 import javafx.scene.paint.Color
@@ -16,14 +17,18 @@ import tornadofx.*
 
 class GameView : View("\"Let'sss grow!\"") {
     private val controller: GameController by inject()
+    private var rowCount = 0
+    private var colCount = 0
 
     override val root: GridPane
     private var grid : GridPane = gridpane {
         background = Background(BackgroundFill(Color.color(0.667, 0.843, 0.318), CornerRadii.EMPTY, Insets.EMPTY))
 
+        alignment = Pos.CENTER
+
         val map = controller.getGameMap()
-        val rowCount = map.rowCount
-        val colCount = map.colCount
+        rowCount = map.rowCount
+        colCount = map.colCount
 
         prefWidth = rowCount * Tile.size
         prefHeight = colCount * Tile.size
@@ -36,18 +41,20 @@ class GameView : View("\"Let'sss grow!\"") {
     }
 
     init {
-        for (i in 1 .. 10)
-        {
+        for (col in 0 until  colCount) {
             grid.columnConstraints.add(ColumnConstraints().apply {
                 halignment = HPos.CENTER
-                prefWidth = 20.0
-            })
-
-            grid.rowConstraints.add(RowConstraints().apply {
-                valignment = VPos.CENTER
-                prefHeight = 20.0
+                prefWidth = Tile.size
             })
         }
+
+        for (row in 0 until rowCount) {
+            grid.rowConstraints.add(RowConstraints().apply {
+                valignment = VPos.CENTER
+                prefHeight = Tile.size
+            })
+        }
+
         updateGrid(controller.getGameMap())
         root = grid
         val timeline = Timeline(

@@ -4,6 +4,7 @@ import patrik07.snake.model.game.Game
 import patrik07.snake.model.game.Map
 import patrik07.snake.model.game.gameobjects.GrassDark
 import patrik07.snake.model.game.gameobjects.GrassLight
+import patrik07.snake.model.game.gameobjects.Head
 import patrik07.snake.model.game.gameobjects.Wall
 import tornadofx.*
 import java.io.File
@@ -36,12 +37,13 @@ class MapController : Controller() {
         for (row in 0 until colCount) {
             for (col in 0 until lines[row].length) {
                 when (lines[row][col]) {
-                    '#' -> map.map[row][col] = Wall(row, col)
+                    '#' -> map.map[row][col] = Wall()
                     'G' -> {
                         if ((row + col) % 2 == 0) {
-                            map.map[row][col] = GrassLight(row, col);
-                        } else map.map[row][col] = GrassDark(row, col);
+                            map.map[row][col] = GrassLight()
+                        } else map.map[row][col] = GrassDark()
                     }
+                    'S' -> map.map[row][col] = Head()
                 }
             }
         }

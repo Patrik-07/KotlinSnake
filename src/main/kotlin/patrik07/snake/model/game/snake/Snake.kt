@@ -1,10 +1,10 @@
 package patrik07.snake.model.game.snake
 
-import patrik07.snake.model.game.gameobjects.Part
+import patrik07.snake.model.game.gameobjects.Head
 
 class Snake(initialDirection: Int, length: Int) {
     var isAlive = true
-    var body: MutableList<Part> = ArrayList()
+    var body: MutableList<Head> = ArrayList()
 
     var direction: Int = initialDirection
         set(value) {
