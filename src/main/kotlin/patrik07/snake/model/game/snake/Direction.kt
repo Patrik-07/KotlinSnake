@@ -1,4 +1,4 @@
-package patrik07.snake.model.game
+package patrik07.snake.model.game.snake
 
 object Direction {
     const val UP: Int = 0

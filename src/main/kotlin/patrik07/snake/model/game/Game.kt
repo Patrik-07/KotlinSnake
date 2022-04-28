@@ -5,8 +5,7 @@ class Game {
         val instance = Game()
     }
 
-    val snake = Snake.instance
-    val map = GameMap(20).map
+    var map = Map(20, 10)
 
     fun start() {
 

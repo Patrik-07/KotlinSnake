@@ -1,9 +1,10 @@
-package patrik07.snake.controller
+package patrik07.snake.controller.game
 
 import javafx.scene.input.KeyCode
 import tornadofx.*
 import javafx.scene.input.KeyEvent
 import patrik07.snake.model.game.Game
+import patrik07.snake.model.game.Map
 
 class GameController : Controller() {
     private val game = Game.instance
@@ -15,11 +16,14 @@ class GameController : Controller() {
 //            KeyCode.S, KeyCode.DOWN -> snake.direction = Direction.DOWN
 //            KeyCode.D, KeyCode.RIGHT -> snake.direction = Direction.RIGHT
             KeyCode.E -> {
-                println("asd")
                 game.over()
+                println("asd")
             }
-
             else -> {}
         }
+    }
+
+    fun getGameMap(): Map {
+        return game.map
     }
 }

@@ -31,7 +31,7 @@ class MenuView : View() {
                     val w = find<GameView>().openModal()
                     w?.isResizable = false
                     w?.setOnCloseRequest {
-                        openInternalWindow<SaveView>()
+                        openInternalWindow(SaveView::class)
                     }
                 }
             }
@@ -42,6 +42,17 @@ class MenuView : View() {
                 setOnAction {
                     replaceWith(
                         LeaderboardView::class,
+                        transition = ViewTransition.Metro(1.seconds)
+                    )
+                }
+            }
+            button("Settings") {
+                vboxConstraints {
+                    maxWidth = 100.0
+                }
+                setOnAction {
+                    replaceWith(
+                        SettingsView::class,
                         transition = ViewTransition.Metro(1.seconds)
                     )
                 }
