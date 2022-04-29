@@ -3,8 +3,16 @@ package patrik07.snake.model.game
 import patrik07.snake.model.game.gameobjects.*
 
 class Map(val rowCount: Int, val colCount: Int) {
-    val map: Array<Array<GameObject>> = Array(rowCount) {
+    private val map: Array<Array<GameObject>> = Array(rowCount) {
         Array(colCount) { Empty() }
+    }
+
+    operator fun get(row: Int, col: Int): GameObject {
+        return map[row][col]
+    }
+
+    operator fun set(row: Int, col: Int, gameObject: GameObject) {
+        map[row][col] = gameObject
     }
 
     /*

@@ -1,4 +1,4 @@
-package patrik07.snake.model.game.gameobjects
+package patrik07.snake.model.game
 
 import patrik07.snake.model.game.snake.Snake
 

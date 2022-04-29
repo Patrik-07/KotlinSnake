@@ -1,4 +1,4 @@
-package patrik07.snake.view.main
+package patrik07.snake.view.menu
 
 import javafx.geometry.Pos
 import javafx.scene.layout.HBox

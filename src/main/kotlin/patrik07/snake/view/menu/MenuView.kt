@@ -1,10 +1,9 @@
-package patrik07.snake.view.main
+package patrik07.snake.view.menu
 
 import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.scene.text.Font
 import patrik07.snake.view.game.GameView
-import patrik07.snake.view.game.SaveView
 import tornadofx.*
 
 class MenuView : View() {
@@ -35,9 +34,11 @@ class MenuView : View() {
                     }
                 }
             }
+
             button("Leaderboard") {
                 vboxConstraints {
                     maxWidth = 100.0
+                    margin = Insets(15.0, 0.0, 0.0, 0.0)
                 }
                 setOnAction {
                     replaceWith(
@@ -46,6 +47,7 @@ class MenuView : View() {
                     )
                 }
             }
+
             button("Settings") {
                 vboxConstraints {
                     maxWidth = 100.0
@@ -57,9 +59,23 @@ class MenuView : View() {
                     )
                 }
             }
+
+            button("Editor") {
+                vboxConstraints {
+                    maxWidth = 100.0
+                }
+                setOnAction {
+                    replaceWith(
+                        LeaderboardView::class,
+                        transition = ViewTransition.Metro(1.seconds)
+                    )
+                }
+            }
+
             button("Quit") {
                 vboxConstraints {
                     maxWidth = 100.0
+                    margin = Insets(0.0, 0.0, 15.0, 0.0)
                 }
                 setOnAction {
                     close()

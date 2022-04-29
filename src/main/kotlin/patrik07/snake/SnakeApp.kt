@@ -2,10 +2,9 @@ package patrik07.snake
 
 import javafx.stage.Stage
 import patrik07.snake.controller.game.MapController
-import patrik07.snake.view.main.MenuView
+import patrik07.snake.view.menu.MenuView
 import tornadofx.*
 import patrik07.snake.controller.leaderboard.LeaderboardController
-import patrik07.snake.model.game.Game
 
 class SnakeApp: App(MenuView::class) {
     private val leaderboardController: LeaderboardController by inject()
@@ -14,7 +13,7 @@ class SnakeApp: App(MenuView::class) {
     override fun start(stage: Stage) {
         super.start(stage)
         leaderboardController.readPlayers()
-        mapController.setMapFromStringResources("maps/map01.txt")
+        mapController.setMapFromStringResources("maps/easy.txt")
     }
 
     override fun stop() {

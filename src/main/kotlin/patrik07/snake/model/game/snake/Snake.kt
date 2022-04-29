@@ -2,17 +2,18 @@ package patrik07.snake.model.game.snake
 
 import patrik07.snake.model.game.gameobjects.Head
 
-class Snake(initialDirection: Int, length: Int) {
+class Snake {
+    companion object {
+        val instance = Snake()
+    }
+
     var isAlive = true
     var body: MutableList<Head> = ArrayList()
 
-    var direction: Int = initialDirection
+    var direction: Int = 0
         set(value) {
             //body[0].direction = value
             field = value
-            "############" +
-            "#GGGGGGGGGG#" +
-            "#"
         }
 
     init {

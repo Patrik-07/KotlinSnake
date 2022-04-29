@@ -1,4 +1,4 @@
-package patrik07.snake.view.game
+package patrik07.snake.view.menu
 
 import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Insets

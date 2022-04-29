@@ -1,4 +1,4 @@
-package patrik07.snake.view.main
+package patrik07.snake.view.menu
 
 import javafx.geometry.Insets
 import javafx.geometry.Pos
@@ -30,19 +30,19 @@ class SettingsView : View() {
                 radiobutton("Map01") {
                     isSelected = true
                     setOnAction {
-                        mapController.setMapFromStringResources("maps/map01.txt")
+                        mapController.setMapFromStringResources("maps/easy.txt")
                     }
                     paddingAll = 5.0
                 }
                 radiobutton("Map02") {
                     setOnAction {
-                        mapController.setMapFromStringResources("maps/map02.txt")
+                        mapController.setMapFromStringResources("maps/normal.txt")
                     }
                     paddingAll = 5.0
                 }
                 radiobutton("Map03") {
                     setOnAction {
-                        mapController.setMapFromStringResources("maps/map03.txt")
+                        mapController.setMapFromStringResources("maps/hard.txt")
                     }
                     paddingAll = 5.0
                 }

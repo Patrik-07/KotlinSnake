@@ -11,10 +11,11 @@ import java.io.File
 import java.io.InputStream
 
 class MapController : Controller() {
-    val game = Game.instance
+    private val game = Game.instance
+    var map = game.map
 
     fun setMapFromStringResources(path: String) {
-        game.map = parseStringToMap(path)
+        map = parseStringToMap(path)
     }
 
     private fun parseStringToMap(path: String): Map {
@@ -37,13 +38,13 @@ class MapController : Controller() {
         for (row in 0 until colCount) {
             for (col in 0 until lines[row].length) {
                 when (lines[row][col]) {
-                    '#' -> map.map[row][col] = Wall()
+                    '#' -> map[row, col] = Wall()
                     'G' -> {
                         if ((row + col) % 2 == 0) {
-                            map.map[row][col] = GrassLight()
-                        } else map.map[row][col] = GrassDark()
+                            map[row, col] = GrassLight()
+                        } else map[row, col] = GrassDark()
                     }
-                    'S' -> map.map[row][col] = Head()
+                    'S' -> map[row, col] = Head()
                 }
             }
         }

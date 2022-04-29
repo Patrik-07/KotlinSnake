@@ -1,6 +1,7 @@
 package patrik07.snake.view.game.tile
 
 import javafx.scene.shape.Rectangle
+import patrik07.snake.model.game.GameObject
 import patrik07.snake.model.game.gameobjects.*
 import patrik07.snake.view.game.tile.tiles.*
 
@@ -17,7 +18,7 @@ class Tile {
 
         fun get(gameObject: GameObject): Rectangle {
             val tileFactory = tiles[gameObject::class]
-            return tileFactory!!.getTile(gameObject)
+            return tileFactory!!.getTile()
         }
     }
 }
