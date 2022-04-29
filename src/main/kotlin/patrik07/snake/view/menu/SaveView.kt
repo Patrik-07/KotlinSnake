@@ -25,9 +25,19 @@ class SaveView : View() {
         hbox {
             alignment = Pos.CENTER
 
-            button("Save").setOnAction {
-                if (!name.isBlank().get()) {
-                    close()
+            button("Save") {
+                setOnAction {
+                    if (!name.isBlank().get()) {
+                        close()
+                    }
+                }
+                hoverProperty().onChange {
+                    if (!text.contains("~")) {
+                        text = "~$text~"
+                    } else {
+                        text = text.removePrefix("~")
+                        text = text.removeSuffix("~")
+                    }
                 }
             }
         }

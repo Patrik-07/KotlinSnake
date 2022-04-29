@@ -13,7 +13,7 @@ class MenuView : View() {
 
         hbox {
             alignment = Pos.CENTER
-            label("Snake game") {
+            label("Kotlin snake game") {
                 padding = Insets(20.0, 0.0, 0.0, 0.0)
                 font = Font.font(20.0)
             }
@@ -33,18 +33,34 @@ class MenuView : View() {
                         openInternalWindow(SaveView::class)
                     }
                 }
+                hoverProperty().onChange {
+                    if (!text.contains("~")) {
+                        text = "~$text~"
+                    } else {
+                        text = text.removePrefix("~")
+                        text = text.removeSuffix("~")
+                    }
+                }
             }
 
             button("Leaderboard") {
                 vboxConstraints {
                     maxWidth = 100.0
-                    margin = Insets(15.0, 0.0, 0.0, 0.0)
+                    margin = Insets(20.0, 0.0, 0.0, 0.0)
                 }
                 setOnAction {
                     replaceWith(
                         LeaderboardView::class,
                         transition = ViewTransition.Metro(1.seconds)
                     )
+                }
+                hoverProperty().onChange {
+                    if (!text.contains("~")) {
+                        text = "~$text~"
+                    } else {
+                        text = text.removePrefix("~")
+                        text = text.removeSuffix("~")
+                    }
                 }
             }
 
@@ -58,6 +74,14 @@ class MenuView : View() {
                         transition = ViewTransition.Metro(1.seconds)
                     )
                 }
+                hoverProperty().onChange {
+                    if (!text.contains("~")) {
+                        text = "~$text~"
+                    } else {
+                        text = text.removePrefix("~")
+                        text = text.removeSuffix("~")
+                    }
+                }
             }
 
             button("Editor") {
@@ -70,15 +94,31 @@ class MenuView : View() {
                         transition = ViewTransition.Metro(1.seconds)
                     )
                 }
+                hoverProperty().onChange {
+                    if (!text.contains("~")) {
+                        text = "~$text~"
+                    } else {
+                        text = text.removePrefix("~")
+                        text = text.removeSuffix("~")
+                    }
+                }
             }
 
             button("Quit") {
                 vboxConstraints {
                     maxWidth = 100.0
-                    margin = Insets(0.0, 0.0, 15.0, 0.0)
+                    margin = Insets(0.0, 0.0, 20.0, 0.0)
                 }
                 setOnAction {
                     close()
+                }
+                hoverProperty().onChange {
+                    if (!text.contains("~")) {
+                        text = "~$text~"
+                    } else {
+                        text = text.removePrefix("~")
+                        text = text.removeSuffix("~")
+                    }
                 }
             }
         }

@@ -27,6 +27,6 @@ class SnakeView : GridView(MapController().map) {
     }
 
     private fun update() {
-//        val map = snakeController.snakeMap
+
     }
 }

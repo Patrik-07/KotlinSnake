@@ -62,6 +62,14 @@ class SettingsView : View() {
                         transition = ViewTransition.Metro(1.seconds)
                     )
                 }
+                hoverProperty().onChange {
+                    if (!text.contains("~")) {
+                        text = "~$text~"
+                    } else {
+                        text = text.removePrefix("~")
+                        text = text.removeSuffix("~")
+                    }
+                }
             }
         }
     }

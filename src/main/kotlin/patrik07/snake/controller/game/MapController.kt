@@ -4,7 +4,7 @@ import patrik07.snake.model.game.Game
 import patrik07.snake.model.game.Map
 import patrik07.snake.model.game.gameobjects.GrassDark
 import patrik07.snake.model.game.gameobjects.GrassLight
-import patrik07.snake.model.game.gameobjects.Head
+import patrik07.snake.model.game.snake.Head
 import patrik07.snake.model.game.gameobjects.Wall
 import tornadofx.*
 import java.io.File
