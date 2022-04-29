@@ -14,6 +14,7 @@ class Tile {
             GrassDark::class to GrassDarkTileFactory(),
             Wall::class to WallTileFactory(),
             Empty::class to EmptyTileFactory()
+
         )
 
         fun get(gameObject: GameObject): Rectangle {

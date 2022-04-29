@@ -1,14 +1,15 @@
 package patrik07.snake.view.game.grid
 
-import patrik07.snake.model.game.Map
+import patrik07.snake.controller.game.MapController
 import tornadofx.*
 
-open class GridView(map: Map) : View() {
-    val grid = MapGrid(map)
+open class GridView : View() {
+    private val mapController: MapController by inject()
+    val grid = Grid(mapController.map)
 
     override val root = grid
 
-    fun update(map: Map) {
-        grid.update(map)
+    fun update() {
+        grid.update(mapController.map)
     }
 }

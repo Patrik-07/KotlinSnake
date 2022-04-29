@@ -20,8 +20,14 @@ class SnakeApp: App(MenuView::class) {
         super.stop()
         leaderboardController.savePlayers()
     }
+
+    fun initialize() {
+        mapController.setMapFromStringResources("maps/easy.txt")
+    }
 }
 
 fun main() {
+    val snakeApp = SnakeApp()
+    snakeApp.initialize()
     launch<SnakeApp>()
 }

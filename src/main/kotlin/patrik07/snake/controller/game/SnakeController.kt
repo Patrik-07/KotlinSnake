@@ -2,7 +2,6 @@ package patrik07.snake.controller.game
 
 import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyEvent
-import patrik07.snake.model.game.snake.Direction
 import patrik07.snake.model.game.snake.Snake
 import tornadofx.*
 

@@ -9,7 +9,7 @@ import patrik07.snake.view.game.grid.GridView
 
 import tornadofx.*
 
-class SnakeView : GridView(MapController().map) {
+class SnakeView : GridView() {
     private val snakeController: SnakeController by inject()
 
     init {
@@ -24,9 +24,5 @@ class SnakeView : GridView(MapController().map) {
         )
         timeline.cycleCount = Animation.INDEFINITE
         timeline.play()
-    }
-
-    private fun update() {
-
     }
 }

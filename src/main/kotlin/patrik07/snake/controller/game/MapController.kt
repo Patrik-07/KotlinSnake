@@ -1,18 +1,16 @@
 package patrik07.snake.controller.game
 
-import patrik07.snake.model.game.Game
 import patrik07.snake.model.game.Map
 import patrik07.snake.model.game.gameobjects.GrassDark
 import patrik07.snake.model.game.gameobjects.GrassLight
-import patrik07.snake.model.game.snake.Head
+import patrik07.snake.model.game.gameobjects.Head
 import patrik07.snake.model.game.gameobjects.Wall
 import tornadofx.*
 import java.io.File
 import java.io.InputStream
 
 class MapController : Controller() {
-    private val game = Game.instance
-    var map = game.map
+    lateinit var map: Map
 
     fun setMapFromStringResources(path: String) {
         map = parseStringToMap(path)

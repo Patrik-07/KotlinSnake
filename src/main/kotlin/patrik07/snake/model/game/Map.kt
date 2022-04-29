@@ -1,8 +1,8 @@
 package patrik07.snake.model.game
 
 import patrik07.snake.model.game.gameobjects.*
-import patrik07.snake.model.game.snake.Head
-import patrik07.snake.model.game.snake.Part
+import patrik07.snake.model.game.gameobjects.Head
+import patrik07.snake.model.game.gameobjects.Part
 
 class Map(val rowCount: Int, val colCount: Int) {
     private val map: Array<Array<GameObject>> = Array(rowCount) {

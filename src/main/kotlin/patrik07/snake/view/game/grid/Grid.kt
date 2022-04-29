@@ -8,9 +8,8 @@ import javafx.scene.layout.*
 import javafx.scene.paint.Color
 import patrik07.snake.model.game.Map
 import patrik07.snake.view.game.tile.Tile
-import tornadofx.FX.Companion.primaryStage
 
-class MapGrid(map: Map) : GridPane() {
+class Grid(map: Map) : GridPane() {
     private val rowCount = map.rowCount
     private val colCount = map.colCount
 
@@ -21,8 +20,6 @@ class MapGrid(map: Map) : GridPane() {
 
         prefWidth = rowCount * Tile.size
         prefHeight = colCount * Tile.size
-
-        primaryStage.isResizable = false
 
         for (col in 0 until  colCount) {
             columnConstraints.add(ColumnConstraints().apply {
@@ -37,6 +34,7 @@ class MapGrid(map: Map) : GridPane() {
                 prefHeight = Tile.size
             })
         }
+        update(map)
     }
 
     fun update(map: Map) {

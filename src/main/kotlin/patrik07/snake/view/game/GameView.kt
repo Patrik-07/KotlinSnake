@@ -3,8 +3,7 @@ package patrik07.snake.view.game
 import javafx.scene.layout.*
 import tornadofx.*
 
-
-class GameView : View("\"Let'sss grow!\"") {
+class GameView : View() {
     private var pane = Pane()
     private var snakeView: SnakeView
     override val root = pane
