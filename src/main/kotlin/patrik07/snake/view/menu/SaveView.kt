@@ -4,9 +4,6 @@ import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.scene.paint.Color
-import javafx.scene.text.Font
-import patrik07.snake.model.game.gameobjects.Empty
-import sun.java2d.pipe.SpanShapeRenderer.Simple
 import tornadofx.*
 
 class SaveView : View("Save your points!") {
@@ -31,7 +28,7 @@ class SaveView : View("Save your points!") {
             padding = Insets(-15.0, 0.0, 0.0, 0.0)
             button("Save") {
                 setOnAction {
-                    if (name.isEmpty.get()) {
+                    if (name.isBlank().get()) {
                         timeline {
                             keyframe(1.seconds) {
                                 textField.style {
@@ -40,9 +37,9 @@ class SaveView : View("Save your points!") {
                             }
                         }
                     } else {
-                        textField.clear()
                         close()
                     }
+                    textField.clear()
                 }
                 hoverProperty().onChange {
                     textFill = if (textFill == Color.WHITESMOKE) {

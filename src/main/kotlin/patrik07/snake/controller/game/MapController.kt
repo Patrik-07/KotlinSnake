@@ -1,16 +1,17 @@
 package patrik07.snake.controller.game
 
 import patrik07.snake.model.game.Map
-import patrik07.snake.model.game.gameobjects.GrassDark
-import patrik07.snake.model.game.gameobjects.GrassLight
-import patrik07.snake.model.game.gameobjects.Head
-import patrik07.snake.model.game.gameobjects.Wall
+import patrik07.snake.model.game.gameobject.gameobjects.*
 import tornadofx.*
 import java.io.File
 import java.io.InputStream
 
 class MapController : Controller() {
     lateinit var map: Map
+
+    fun update() {
+
+    }
 
     fun setMapFromStringResources(path: String) {
         map = parseStringToMap(path)
@@ -37,11 +38,7 @@ class MapController : Controller() {
             for (col in 0 until lines[row].length) {
                 when (lines[row][col]) {
                     '#' -> map[row, col] = Wall()
-                    'G' -> {
-                        if ((row + col) % 2 == 0) {
-                            map[row, col] = GrassLight()
-                        } else map[row, col] = GrassDark()
-                    }
+                    ' ' -> map[row, col] = Empty()
                     'S' -> map[row, col] = Head()
                 }
             }

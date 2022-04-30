@@ -1,4 +1,4 @@
-package patrik07.snake.view.game.grid
+package patrik07.snake.view.game.common.grid
 
 import javafx.geometry.HPos
 import javafx.geometry.Insets
@@ -6,13 +6,9 @@ import javafx.geometry.Pos
 import javafx.geometry.VPos
 import javafx.scene.layout.*
 import javafx.scene.paint.Color
-import patrik07.snake.model.game.Map
-import patrik07.snake.view.game.tile.Tile
+import patrik07.snake.view.game.common.tile.Tile
 
-class Grid(map: Map) : GridPane() {
-    private val rowCount = map.rowCount
-    private val colCount = map.colCount
-
+open class Grid(rowCount: Int, colCount: Int) : GridPane() {
     init {
         background = Background(BackgroundFill(Color.TRANSPARENT, CornerRadii.EMPTY, Insets.EMPTY))
 
@@ -34,16 +30,13 @@ class Grid(map: Map) : GridPane() {
                 prefHeight = Tile.size
             })
         }
-        update(map)
     }
 
-    fun update(map: Map) {
-        for (row in 0 until rowCount) {
-            for (col in 0 until colCount) {
-                val gameObject = map[row, col]
-                val tile = Tile.get(gameObject)
-                add(tile, col, row)
-            }
-        }
+    operator fun get(row: Int, col: Int): Tile? {
+        return children[row * Tile.size.toInt() + col] as Tile?
+    }
+
+    operator fun set(row: Int, col: Int, tile: Tile?) {
+        add(tile, col, row)
     }
 }

@@ -1,20 +1,21 @@
-####################
-#GGGGGGGGGGGGGGGGGG#
-#GGGGGGGGGGGGGGGGGG#
-#GGGGGGGGGGGGGGGGGG#
-#GGGGGGGGGGGGGGGGGG#
-#GGGGGGGGGGGGGGGGGG#
-#GGGGGGGGGGGGGGGGGG#
-#GGGGGGGGGGGGGGGGGG#
-#GGGGGGGGGGGGGGGGGG#
-#GGGGGGGGGGGGGGGGGG#
-#GGGGGGGGGGGGGGGGGG#
-#GGGGGGGGGGGGGGGGGG#
-#GGGGGGGGGGGGGGGGGG#
-#GGGGGGGGGGGGGGGGGG#
-#GGGGGGGGGGGGGGGGGG#
-#GGGGGGGGGGGGGGGGGG#
-#GGGGGGGGGGGGGGGGGG#
-#GGGGGGGGGGGGGGGGGG#
-#GGGGGGGGGGGGGGGGGG#
-####################
+#####################
+#                   #
+#                   #
+#                   #
+#                   #
+#                   #
+#                   #
+#                   #
+#                   #
+#                   #
+#         S         #
+#                   #
+#                   #
+#                   #
+#                   #
+#                   #
+#                   #
+#                   #
+#                   #
+#                   #
+#####################
