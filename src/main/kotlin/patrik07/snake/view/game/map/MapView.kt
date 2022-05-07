@@ -1,21 +1,20 @@
 package patrik07.snake.view.game.map
 
 import patrik07.snake.view.game.common.grid.GridView
-import patrik07.snake.model.game.Map
-import patrik07.snake.view.game.common.tile.Tile
 import tornadofx.*
 
-class MapView(map: Map) : GridView(map) {
+class MapView : GridView() {
     init {
-        update(map)
+        update()
     }
 
-    fun update(map: Map) {
+    fun update() {
+        mapController.update()
         grid.clear()
-        for (row in 0 until map.rowCount) {
-            for (col in 0 until map.colCount) {
-                val gameObject = map[row, col]
-                val tile = Tile.get(gameObject)
+
+        for (row in 0 until mapController.rowCount) {
+            for (col in 0 until mapController.colCount) {
+                val tile = mapController.getTile(row, col)
                 grid[row, col] = tile?.create()
             }
         }

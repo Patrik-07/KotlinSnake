@@ -2,6 +2,7 @@ package patrik07.snake.controller.game
 
 import patrik07.snake.model.game.Map
 import patrik07.snake.model.game.gameobject.gameobjects.*
+import patrik07.snake.view.game.common.tile.Tile
 import tornadofx.*
 import java.io.File
 import java.io.InputStream
@@ -9,8 +10,19 @@ import java.io.InputStream
 class MapController : Controller() {
     lateinit var map: Map
 
+    val rowCount: Int
+        get() = map.rowCount
+    val colCount: Int
+        get() = map.colCount
+
+
     fun update() {
 
+    }
+
+    fun getTile(row: Int, col: Int): Tile? {
+        val gameObject = map[row, col]
+        return Tile.get(gameObject)
     }
 
     fun setMapFromStringResources(path: String) {

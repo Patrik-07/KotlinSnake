@@ -9,8 +9,8 @@ class Game {
 
     }
 
-    fun over() {
-
+    fun isOver(): Boolean {
+        return true
     }
 
     fun update() {

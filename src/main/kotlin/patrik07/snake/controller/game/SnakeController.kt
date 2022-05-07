@@ -7,7 +7,7 @@ import patrik07.snake.model.game.snake.Snake
 import tornadofx.*
 
 class SnakeController : Controller() {
-    val snake = Snake.instance
+    private val snake = Snake.instance
 
     fun handleKeyEvent(keyEvent: KeyEvent) {
         when (keyEvent.code) {
