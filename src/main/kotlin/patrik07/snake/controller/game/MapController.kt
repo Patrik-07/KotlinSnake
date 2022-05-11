@@ -12,10 +12,6 @@ class MapController : Controller() {
     val rowCount get() = Map.rowCount
     val colCount get() = Map.colCount
 
-    fun update() {
-
-    }
-
     fun getTile(row: Int, col: Int): Tile? {
         val gameObject = Map[row, col]
         return Tile.get(gameObject)

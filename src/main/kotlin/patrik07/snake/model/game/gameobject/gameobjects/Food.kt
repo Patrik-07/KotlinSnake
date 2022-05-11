@@ -4,7 +4,7 @@ import patrik07.snake.model.game.gameobject.GameObject
 import patrik07.snake.model.game.snake.Snake
 
 class Food : GameObject() {
-    override fun collideWithSnake(snake: Snake) {
-//        snake.grow()
+    override fun collideWithSnake() {
+        Snake.grow()
     }
 }

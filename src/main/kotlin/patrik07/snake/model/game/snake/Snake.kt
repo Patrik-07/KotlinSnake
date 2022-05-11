@@ -1,52 +1,64 @@
 package patrik07.snake.model.game.snake
 
+import patrik07.snake.model.game.Map
 import patrik07.snake.model.game.gameobject.gameobjects.Head
 import patrik07.snake.model.game.gameobject.gameobjects.Part
 
-class Snake(val initialLength: Int) {
+class Snake {
     companion object {
-        val instance = Snake(3)
-    }
+        private val body = ArrayList<Part>()
 
-    private val body = ArrayList<Part>()
-    var isAlive = true
-    var direction: Int = Direction.RIGHT
-    val length get() = body.size
+        var isAlive = true
+        var direction: Int = Direction.RIGHT
 
-    fun reset() {
-        body.clear()
-        body.add(Head(0, 0))
-        body.add(Part(0, 0))
-        body.add(Part(0, 0))
-        isAlive = true
-    }
+        const val initialLength = 20
+        val length get() = body.size
 
-    fun update(): Boolean {
-        move()
-        return isAlive
-    }
+        fun reset() {
+            isAlive = true
 
-    private fun grow() {
+            body.clear()
+            val centerX = Map.rowCount / 2
+            val centerY = Map.colCount / 2
 
-    }
-
-    private fun move() {
-        var lastX = body[0].x
-        var lastY = body[0].y
-        for (i in 1 until body.size) {
-            val currentX = body[i].x
-            val currentY = body[i].y
-            body[i].x = lastX
-            body[i].y = lastY
-            lastX = currentX
-            lastY = currentY
+            body.add(Head(centerX, centerY))
+            for (i in 1 until initialLength)
+                body.add(Part(centerX, centerY))
         }
 
-        when (direction) {
-            Direction.UP -> body[0].y--
-            Direction.LEFT -> body[0].x--
-            Direction.DOWN -> body[0].y++
-            Direction.RIGHT -> body[0].x--
+        fun update(): Boolean {
+            move()
+
+            Map.clear()
+            for (part in body) {
+                Map[part.x, part.y] = part
+            }
+
+            return isAlive
+        }
+
+        fun grow() {
+
+        }
+
+        private fun move() {
+            var lastX = body[0].x
+            var lastY = body[0].y
+            for (i in 1 until body.size) {
+                val currentX = body[i].x
+                val currentY = body[i].y
+                body[i].x = lastX
+                body[i].y = lastY
+                lastX = currentX
+                lastY = currentY
+            }
+
+            when (direction) {
+                Direction.UP -> body[0].x--
+                Direction.LEFT -> body[0].y--
+                Direction.DOWN -> body[0].x++
+                Direction.RIGHT -> body[0].y++
+            }
         }
     }
 }

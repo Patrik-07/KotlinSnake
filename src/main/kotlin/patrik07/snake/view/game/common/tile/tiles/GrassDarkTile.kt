@@ -1,6 +1,7 @@
 package patrik07.snake.view.game.common.tile.tiles
 
 import javafx.scene.paint.Color
+import patrik07.snake.model.game.gameobject.GameObject
 import patrik07.snake.view.game.common.tile.Tile
 
 class GrassDarkTile : Tile() {
@@ -8,7 +9,7 @@ class GrassDarkTile : Tile() {
         fill = Color.color(0.635, 0.82, 0.286)
     }
 
-    override fun create(): Tile {
+    override fun create(gameObject: GameObject): Tile {
         return GrassDarkTile()
     }
 }

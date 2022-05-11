@@ -5,7 +5,7 @@ import patrik07.snake.model.game.snake.Direction
 import patrik07.snake.model.game.snake.Snake
 
 open class Part(var x: Int, var y: Int) : GameObject() {
-    private var index: Int = 0
+    var index: Int = 0
 
     companion object {
         private var count = 0
@@ -15,7 +15,7 @@ open class Part(var x: Int, var y: Int) : GameObject() {
         index = count++
     }
 
-    override fun collideWithSnake(snake: Snake) {
-        snake.isAlive = false
+    override fun collideWithSnake() {
+        Snake.isAlive = false
     }
 }

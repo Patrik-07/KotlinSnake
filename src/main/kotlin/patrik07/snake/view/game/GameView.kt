@@ -10,6 +10,7 @@ import javafx.scene.control.Label
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
 import patrik07.snake.controller.game.GameController
+import patrik07.snake.model.game.snake.Snake
 import patrik07.snake.view.game.map.BackgroundView
 import patrik07.snake.view.game.map.MapView
 import patrik07.snake.view.menu.SaveView
@@ -26,7 +27,7 @@ class GameView : View() {
 
     private var isGameOver = false
     private val timeline = Timeline(
-        KeyFrame(0.5.seconds, {
+        KeyFrame(0.125.seconds, {
             isGameOver = gameController.updateGame()
             if (!isGameOver) {
                 mapView.update()

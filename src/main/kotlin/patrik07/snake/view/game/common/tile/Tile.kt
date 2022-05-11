@@ -11,7 +11,7 @@ abstract class Tile : Rectangle() {
         height = size
     }
 
-    abstract fun create(): Tile
+    abstract fun create(gameObject: GameObject): Tile
 
     companion object {
         const val size = 20.0
@@ -22,11 +22,12 @@ abstract class Tile : Rectangle() {
             Food::class to FoodTile(),
 
             Head::class to HeadTile(),
-            Pair::class to PartTile()
+            Part::class to PartTile()
         )
 
         fun get(gameObject: GameObject): Tile? {
-            return tiles[gameObject::class]
+            val tile = tiles[gameObject::class]
+            return tile?.create(gameObject)
         }
     }
 }

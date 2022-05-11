@@ -4,5 +4,5 @@ import patrik07.snake.model.game.gameobject.GameObject
 import patrik07.snake.model.game.snake.Snake
 
 class Empty : GameObject() {
-    override fun collideWithSnake(snake: Snake) {}
+    override fun collideWithSnake() {}
 }

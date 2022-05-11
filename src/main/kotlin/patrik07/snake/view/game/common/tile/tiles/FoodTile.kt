@@ -1,6 +1,7 @@
 package patrik07.snake.view.game.common.tile.tiles
 
 import javafx.scene.paint.Color
+import patrik07.snake.model.game.gameobject.GameObject
 import patrik07.snake.view.game.common.tile.Tile
 
 class FoodTile : Tile()  {
@@ -11,7 +12,7 @@ class FoodTile : Tile()  {
         arcHeight = 10.0
     }
 
-    override fun create(): Tile {
+    override fun create(gameObject: GameObject): Tile {
         return FoodTile()
     }
 }

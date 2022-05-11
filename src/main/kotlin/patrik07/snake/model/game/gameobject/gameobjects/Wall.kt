@@ -4,7 +4,7 @@ import patrik07.snake.model.game.gameobject.GameObject
 import patrik07.snake.model.game.snake.Snake
 
 class Wall : GameObject() {
-    override fun collideWithSnake(snake: Snake) {
-        snake.isAlive = false
+    override fun collideWithSnake() {
+        Snake.isAlive = false
     }
 }

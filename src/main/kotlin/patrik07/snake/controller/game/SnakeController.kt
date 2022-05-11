@@ -7,32 +7,45 @@ import patrik07.snake.model.game.snake.Snake
 import tornadofx.*
 
 class SnakeController : Controller() {
-    private val snake = Snake.instance
-
     fun resetSnake() {
-        snake.reset()
+        Snake.reset()
     }
 
     fun updateSnake(): Boolean {
-        return snake.update()
+        return Snake.update()
     }
 
     fun handleKeyEvent(keyEvent: KeyEvent) {
         when (keyEvent.code) {
-            KeyCode.W, KeyCode.UP -> snake.direction = Direction.UP
-            KeyCode.A, KeyCode.LEFT -> snake.direction = Direction.LEFT
-            KeyCode.S, KeyCode.DOWN -> snake.direction = Direction.DOWN
-            KeyCode.D, KeyCode.RIGHT -> snake.direction = Direction.RIGHT
-            KeyCode.SPACE -> snake.isAlive = false
+            KeyCode.W, KeyCode.UP -> {
+                if (Snake.direction != Direction.DOWN) {
+                    Snake.direction = Direction.UP
+                }
+            }
+            KeyCode.A, KeyCode.LEFT -> {
+                if (Snake.direction != Direction.RIGHT) {
+                    Snake.direction = Direction.LEFT
+                }
+            }
+            KeyCode.S, KeyCode.DOWN -> {
+                if (Snake.direction != Direction.UP) {
+                    Snake.direction = Direction.DOWN
+                }
+            }
+            KeyCode.D, KeyCode.RIGHT -> {
+                if (Snake.direction != Direction.LEFT) {
+                    Snake.direction = Direction.RIGHT
+                }
+            }
             else -> {}
         }
     }
 
     fun getSnakeLength(): Int {
-        return snake.length
+        return Snake.length
     }
 
     fun getSnakeInitialLength(): Int {
-        return snake.initialLength
+        return Snake.initialLength
     }
 }

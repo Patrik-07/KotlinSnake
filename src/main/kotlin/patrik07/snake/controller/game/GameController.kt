@@ -9,17 +9,10 @@ class GameController : Controller() {
 
     fun resetGame() {
         snakeController.resetSnake()
-        mapController.update()
     }
 
     fun updateGame(): Boolean {
-        val isSnakeAlive = snakeController.updateSnake()
-        val isGameOver = !isSnakeAlive
-
-        if (!isGameOver)
-            mapController.update()
-
-        return isGameOver
+        return !snakeController.updateSnake()
     }
 
     fun handleKeyEvent(keyEvent: KeyEvent) {
