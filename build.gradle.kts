@@ -14,7 +14,7 @@ repositories {
 }
 
 application {
-    mainClassName = "patrik07.snake.MainKt"
+    mainClassName = "patrik07.snake.SnakeApp"
 }
 
 dependencies {

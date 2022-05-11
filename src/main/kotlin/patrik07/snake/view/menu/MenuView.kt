@@ -4,6 +4,7 @@ import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
+import patrik07.snake.model.game.snake.Snake
 import patrik07.snake.view.game.GameView
 import tornadofx.*
 
@@ -35,11 +36,8 @@ class MenuView : View() {
                     maxWidth = 110.0
                 }
                 setOnAction {
-                    val w = find<GameView>().openModal()
-                    w?.isResizable = false
-                    w?.setOnCloseRequest {
-                        openInternalWindow(SaveView::class)
-                    }
+                    val gameView = find<GameView>().openModal()
+                    gameView?.isResizable = false
                 }
                 hoverProperty().onChange {
                     textFill = if (textFill == Color.WHITESMOKE) {

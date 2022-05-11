@@ -4,9 +4,15 @@ import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.scene.paint.Color
+import patrik07.snake.model.game.snake.Snake
 import tornadofx.*
 
 class SaveView : View("Save your points!") {
+    companion object {
+        var isClosed = true
+        var isOpened = false
+    }
+
     private var name = SimpleStringProperty()
     private val textField =  textfield(name) {
         promptText = "Name"
@@ -29,16 +35,11 @@ class SaveView : View("Save your points!") {
             button("Save") {
                 setOnAction {
                     if (name.isBlank().get()) {
-                        timeline {
-                            keyframe(1.seconds) {
-                                textField.style {
-                                    backgroundColor.add(Color.INDIANRED)
-                                }
-                            }
+                        textField.style {
+                            backgroundColor.add(Color.INDIANRED)
                         }
-                    } else {
-                        close()
-                    }
+                    } else close()
+
                     textField.clear()
                 }
                 hoverProperty().onChange {
@@ -54,8 +55,14 @@ class SaveView : View("Save your points!") {
         }
     }
 
+    override fun onUndock() {
+        super.onUndock()
+        isClosed = true
+    }
+
     override fun onDock() {
         super.onDock()
-        textField.clear()
+        isOpened = true
+        isClosed = false
     }
 }

@@ -7,8 +7,8 @@ class HeadTile : Tile() {
     init {
         fill = Color.BLUE
 
-        arcWidth = 8.0
-        arcHeight = 8.0
+        arcWidth = 20.0
+        arcHeight = 20.0
     }
 
     override fun create(): Tile {
