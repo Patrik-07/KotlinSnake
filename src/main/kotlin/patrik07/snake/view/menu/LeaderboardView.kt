@@ -16,7 +16,9 @@ class LeaderboardView : View() {
             backgroundColor.add(Color.LIGHTGRAY)
         }
 
-        maxHeight = 200.0
+        isMouseTransparent = true
+
+        maxHeight = 120.0
         maxWidth = 160.0
 
         items.clear()
@@ -48,7 +50,7 @@ class LeaderboardView : View() {
 
         hbox {
             alignment = Pos.CENTER
-            label("Best players") {
+            label("Best 5 players") {
                 font = Font.font(25.0)
                 textFill = Color.WHITESMOKE
             }

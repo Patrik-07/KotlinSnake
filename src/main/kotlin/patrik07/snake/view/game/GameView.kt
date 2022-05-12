@@ -35,7 +35,7 @@ class GameView : View() {
                 setScore()
             } else {
                 if (!GameOverView.isOpened) {
-                    if (gameController.getScore() > 0) {
+                    if (gameController.getScore() > 0 && (gameController.getScore() >= gameController.players.last().score || gameController.players.size < 5)) {
                         openInternalWindow(SaveView::class)
                     } else openInternalWindow(NoSaveView::class)
                 }

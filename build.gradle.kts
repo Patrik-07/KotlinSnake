@@ -4,11 +4,6 @@ plugins {
     application
 }
 
-group = "com.test"
-version = "1.0-SNAPSHOT"
-
-val tornadofx_version: String by rootProject
-
 repositories {
     mavenCentral()
 }
@@ -19,7 +14,7 @@ application {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    implementation("no.tornado:tornadofx:$tornadofx_version")
+    implementation("no.tornado:tornadofx:1.7.20")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
     testImplementation(kotlin("test-junit"))
 }

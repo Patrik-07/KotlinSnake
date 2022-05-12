@@ -7,12 +7,12 @@ import tornadofx.*
 
 class NoSaveView : GameOverView() {
     override val root = vbox(20) {
-        label("You've earned 0 score.")
+        label("Try again to get on the leaderboard!")
 
         hbox {
             alignment = Pos.CENTER
             padding = Insets(-15.0, 0.0, 0.0, 0.0)
-            button("That's sad.") {
+            button("Ok") {
                 setOnAction {
                     close()
                 }

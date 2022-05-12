@@ -16,6 +16,7 @@ class LeaderboardController : Controller() {
         leaderboard.players.add(player)
         leaderboard.players.sortBy { it.score }
         leaderboard.players.reverse()
+        leaderboard.players = leaderboard.players.take(5) as MutableList<Player>
     }
 
     @kotlinx.serialization.ExperimentalSerializationApi
@@ -29,6 +30,7 @@ class LeaderboardController : Controller() {
         leaderboard.players = players.toMutableList()
         leaderboard.players.sortBy { it.score }
         leaderboard.players.reverse()
+        leaderboard.players = leaderboard.players.take(5) as MutableList<Player>
     }
 
     fun savePlayers() {
