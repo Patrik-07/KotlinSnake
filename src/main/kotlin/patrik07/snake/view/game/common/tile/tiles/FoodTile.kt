@@ -8,8 +8,11 @@ class FoodTile : Tile()  {
     init {
         fill = Color.RED
 
-        arcWidth = 10.0
-        arcHeight = 10.0
+        arcWidth = 20.0
+        arcHeight = 20.0
+
+        width = size - 3
+        height = size - 3
     }
 
     override fun create(gameObject: GameObject): Tile {

@@ -4,7 +4,7 @@ import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
-import patrik07.snake.controller.game.MapController
+import patrik07.snake.controller.controllers.MapController
 import tornadofx.*
 
 class SettingsView : View() {

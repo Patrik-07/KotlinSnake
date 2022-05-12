@@ -1,12 +1,11 @@
 package patrik07.snake.view.game.common.grid
 
-import patrik07.snake.controller.game.GameController
-import patrik07.snake.controller.game.MapController
+import patrik07.snake.controller.GameController
 import tornadofx.*
 
 open class GridView : View() {
-    protected val mapController: MapController by inject()
+    protected val gameController: GameController by inject()
 
-    val grid = Grid(mapController.rowCount, mapController.colCount)
+    val grid = Grid(gameController.rowCount, gameController.colCount)
     override val root = grid
 }

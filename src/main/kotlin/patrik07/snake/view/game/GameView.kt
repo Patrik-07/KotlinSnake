@@ -9,18 +9,19 @@ import javafx.scene.control.ButtonType
 import javafx.scene.control.Label
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
-import patrik07.snake.controller.game.GameController
-import patrik07.snake.model.game.snake.Snake
+import patrik07.snake.controller.GameController
 import patrik07.snake.view.game.map.BackgroundView
 import patrik07.snake.view.game.map.MapView
-import patrik07.snake.view.menu.SaveView
+import patrik07.snake.view.menu.gameover.GameOverView
+import patrik07.snake.view.menu.gameover.NoSaveView
+import patrik07.snake.view.menu.gameover.SaveView
 import tornadofx.*
 
 class GameView : View() {
     private val gameController: GameController by inject()
 
-    private val backgroundView = BackgroundView()
-    private val mapView = MapView()
+    private val backgroundView: BackgroundView by inject()
+    private val mapView: MapView by inject()
     private val scoreLabel = Label().apply {
         font = Font.font(15.0)
     }
@@ -33,12 +34,14 @@ class GameView : View() {
                 mapView.update()
                 setScore()
             } else {
-                if (!SaveView.isOpened) {
-                    openInternalWindow(SaveView::class)
+                if (!GameOverView.isOpened) {
+                    if (gameController.getScore() > 0) {
+                        openInternalWindow(SaveView::class)
+                    } else openInternalWindow(NoSaveView::class)
                 }
-                if (SaveView.isClosed) {
-                    SaveView.isOpened = false
-                    SaveView.isClosed = false
+                if (GameOverView.isClosed) {
+                    GameOverView.isOpened = false
+                    GameOverView.isClosed = false
                     gameController.resetGame()
                     close()
                 }
@@ -74,7 +77,7 @@ class GameView : View() {
 
     override fun onUndock() {
         super.onUndock()
-        SaveView.isClosed = true
+        GameOverView.isClosed = true
         timeline.stop()
     }
 
@@ -85,6 +88,7 @@ class GameView : View() {
 
     private fun initView() {
         gameController.resetGame()
+        mapView.update()
 
         setScore()
         setOnClose()
@@ -114,10 +118,10 @@ class GameView : View() {
             ) {
                 if (it.text == "Yes") {
                     gameController.resetGame()
-                    val v = find<SaveView>()
+                    val v = find<GameOverView>()
                     if (v.isDocked)
                         v.close()
-                    SaveView.isOpened = false
+                    GameOverView.isOpened = false
                     timeline.stop()
                     currentWindow?.hide()
                 } else timeline.play()

@@ -11,12 +11,14 @@ class Snake {
         var isAlive = true
         var direction: Int = Direction.RIGHT
 
-        const val initialLength = 20
+        const val initialLength = 3
         val length get() = body.size
 
         fun reset() {
             isAlive = true
+            direction = Direction.RIGHT
 
+            Part.count = 0
             body.clear()
             val centerX = Map.rowCount / 2
             val centerY = Map.colCount / 2
@@ -26,19 +28,21 @@ class Snake {
                 body.add(Part(centerX, centerY))
         }
 
-        fun update(): Boolean {
+        fun update() {
             move()
-
-            Map.clear()
-            for (part in body) {
-                Map[part.x, part.y] = part
+            if (isAlive) {
+                Map.clearSnake()
+                for (part in body) {
+                    Map[part.x, part.y] = part
+                }
             }
-
-            return isAlive
         }
 
         fun grow() {
+            val lastPart = body.last()
+            body.add(Part(lastPart.x, lastPart.y))
 
+            Map.spawnFood()
         }
 
         private fun move() {
@@ -59,6 +63,8 @@ class Snake {
                 Direction.DOWN -> body[0].x++
                 Direction.RIGHT -> body[0].y++
             }
+
+            Map[body[0].x, body[0].y].collideWithSnake()
         }
     }
 }

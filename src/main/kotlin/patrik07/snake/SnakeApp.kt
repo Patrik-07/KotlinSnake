@@ -1,27 +1,28 @@
 package patrik07.snake
 
 import javafx.stage.Stage
-import patrik07.snake.controller.game.MapController
+import kotlinx.serialization.ExperimentalSerializationApi
+import patrik07.snake.controller.GameController
 import patrik07.snake.view.menu.MenuView
 import tornadofx.*
-import patrik07.snake.controller.leaderboard.LeaderboardController
 
+@ExperimentalSerializationApi
 class SnakeApp: App(MenuView::class) {
-    private val leaderboardController: LeaderboardController by inject()
-    private val mapController: MapController by inject()
+    private val gameController: GameController by inject()
 
     override fun start(stage: Stage) {
         super.start(stage)
-        leaderboardController.readPlayers()
-        mapController.setMapFromStringResources("maps/easy.txt")
+        gameController.readPlayers()
+        gameController.setMapFromStringResources("maps/easy.txt")
     }
 
     override fun stop() {
         super.stop()
-        leaderboardController.savePlayers()
+        gameController.savePlayers()
     }
 }
 
+@ExperimentalSerializationApi
 fun main() {
     launch<SnakeApp>()
 }

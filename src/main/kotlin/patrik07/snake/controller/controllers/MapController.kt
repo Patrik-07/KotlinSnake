@@ -1,4 +1,4 @@
-package patrik07.snake.controller.game
+package patrik07.snake.controller.controllers
 
 import patrik07.snake.model.game.Map
 import patrik07.snake.model.game.gameobject.gameobjects.Wall
@@ -11,6 +11,10 @@ import java.io.InputStream
 class MapController : Controller() {
     val rowCount get() = Map.rowCount
     val colCount get() = Map.colCount
+
+    fun resetMap() {
+        Map.clearSnake()
+    }
 
     fun getTile(row: Int, col: Int): Tile? {
         val gameObject = Map[row, col]
@@ -42,5 +46,7 @@ class MapController : Controller() {
                 }
             }
         }
+
+        Map.spawnFood()
     }
 }

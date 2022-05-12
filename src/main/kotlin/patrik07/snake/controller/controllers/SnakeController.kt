@@ -1,4 +1,4 @@
-package patrik07.snake.controller.game
+package patrik07.snake.controller.controllers
 
 import javafx.scene.input.KeyCode
 import javafx.scene.input.KeyEvent
@@ -12,7 +12,9 @@ class SnakeController : Controller() {
     }
 
     fun updateSnake(): Boolean {
-        return Snake.update()
+        if (Snake.isAlive)
+            Snake.update()
+        return Snake.isAlive
     }
 
     fun handleKeyEvent(keyEvent: KeyEvent) {

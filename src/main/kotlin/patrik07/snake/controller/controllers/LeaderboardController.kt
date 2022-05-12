@@ -1,4 +1,4 @@
-package patrik07.snake.controller.leaderboard
+package patrik07.snake.controller.controllers
 
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -10,8 +10,15 @@ import java.io.ByteArrayInputStream
 import java.io.File
 
 class LeaderboardController : Controller() {
-    private val leaderboard = Leaderboard.instance
+    val leaderboard = Leaderboard.instance
 
+    fun addPlayer(player: Player) {
+        leaderboard.players.add(player)
+        leaderboard.players.sortBy { it.score }
+        leaderboard.players.reverse()
+    }
+
+    @kotlinx.serialization.ExperimentalSerializationApi
     fun readPlayers() {
         val players = Json.decodeToSequence<Player>(
             ByteArrayInputStream(
@@ -28,9 +35,10 @@ class LeaderboardController : Controller() {
         var jsonString = "["
 
         val players = leaderboard.players
-        players.forEach {
-            jsonString += Json.encodeToString(it)
-            if (players.last() != it)
+        for (i in 0 until players.size) {
+            val player = players[i]
+            jsonString += Json.encodeToString(player)
+            if (i != players.size - 1)
                 jsonString += ","
         }
 

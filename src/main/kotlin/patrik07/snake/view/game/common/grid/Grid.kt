@@ -6,7 +6,6 @@ import javafx.geometry.Pos
 import javafx.geometry.VPos
 import javafx.scene.layout.*
 import javafx.scene.paint.Color
-import patrik07.snake.controller.game.MapController
 import patrik07.snake.view.game.common.tile.Tile
 
 open class Grid(rowCount: Int, colCount: Int) : GridPane() {

@@ -4,7 +4,6 @@ import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
-import patrik07.snake.model.game.snake.Snake
 import patrik07.snake.view.game.GameView
 import tornadofx.*
 

@@ -1,20 +1,24 @@
-package patrik07.snake.view.menu
+package patrik07.snake.view.menu.gameover
 
 import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.scene.paint.Color
-import patrik07.snake.model.game.snake.Snake
+import patrik07.snake.controller.GameController
+import patrik07.snake.model.leaderboard.Player
 import tornadofx.*
 
-class SaveView : View("Save your points!") {
-    companion object {
-        var isClosed = true
-        var isOpened = false
-    }
+class SaveView : GameOverView() {
+    private val gameController: GameController by inject()
 
     private var name = SimpleStringProperty()
-    private val textField =  textfield(name) {
+    private val textField = textfield(name) {
+        textProperty().onChange {
+            if (text.length > 8) {
+                val s: String = text.substring(0, 8)
+                text = s
+            }
+        }
         promptText = "Name"
         style {
             backgroundColor.add(Color.WHITE)
@@ -27,6 +31,13 @@ class SaveView : View("Save your points!") {
     }
 
     override val root = vbox(20) {
+        hbox {
+            alignment = Pos.CENTER
+            padding = Insets(0.0, 0.0, -15.0, 0.0)
+
+            label("Save your score!")
+        }
+
         add(textField)
 
         hbox {
@@ -38,8 +49,11 @@ class SaveView : View("Save your points!") {
                         textField.style {
                             backgroundColor.add(Color.INDIANRED)
                         }
-                    } else close()
-
+                    } else {
+                        val player = Player(name.get(), gameController.getScore())
+                        gameController.addPlayerToLeaderboard(player)
+                        close()
+                    }
                     textField.clear()
                 }
                 hoverProperty().onChange {
@@ -53,16 +67,5 @@ class SaveView : View("Save your points!") {
                 }
             }
         }
-    }
-
-    override fun onUndock() {
-        super.onUndock()
-        isClosed = true
-    }
-
-    override fun onDock() {
-        super.onDock()
-        isOpened = true
-        isClosed = false
     }
 }

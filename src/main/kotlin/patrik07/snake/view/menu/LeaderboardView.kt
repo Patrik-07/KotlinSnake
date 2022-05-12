@@ -2,16 +2,46 @@ package patrik07.snake.view.menu
 
 import javafx.geometry.Insets
 import javafx.geometry.Pos
-import javafx.scene.control.SelectionMode
-import javafx.scene.control.SelectionModel
 import javafx.scene.layout.HBox
 import javafx.scene.paint.Color
 import javafx.scene.text.Font
-import patrik07.snake.model.leaderboard.Leaderboard
+import patrik07.snake.controller.GameController
 import tornadofx.*
 
 class LeaderboardView : View() {
+    private val gameController: GameController by inject()
+
+    private val playersList = listview<HBox> {
+        style {
+            backgroundColor.add(Color.LIGHTGRAY)
+        }
+
+        maxHeight = 200.0
+        maxWidth = 160.0
+
+        items.clear()
+        gameController.players.forEach {
+            items.add(
+                hbox {
+                    pane {
+                        alignment = Pos.BASELINE_LEFT
+                        prefWidth = 110.0
+                        label(it.name) {
+                            padding = Insets(0.0, 0.0, 0.0, 10.0)
+                        }
+                    }
+                    pane {
+                        alignment = Pos.BASELINE_LEFT
+                        label(it.score.toString())
+                    }
+                }
+            )
+        }
+    }
+
     override val root = vbox(20) {
+        alignment = Pos.CENTER
+
         style {
             backgroundColor.add(Color.DARKGRAY)
         }
@@ -24,36 +54,7 @@ class LeaderboardView : View() {
             }
         }
 
-        val leaderboard = Leaderboard.instance
-        listview<HBox> {
-            isMouseTransparent = true
-            style {
-                backgroundColor.add(Color.LIGHTGRAY)
-            }
-
-            alignment = Pos.CENTER
-
-            maxHeight = 200.0
-            maxWidth = 150.0
-
-            leaderboard.players.forEach {
-                items.add(
-                    hbox {
-                        pane {
-                            alignment = Pos.BASELINE_LEFT
-                            prefWidth = 100.0
-                            label(it.name) {
-                                padding = Insets(0.0, 0.0, 0.0, 15.0)
-                            }
-                        }
-                        pane {
-                            alignment = Pos.BASELINE_LEFT
-                            label(it.score.toString())
-                        }
-                    }
-                )
-            }
-        }
+        add(playersList)
 
         vbox(10) {
             alignment = Pos.BASELINE_CENTER
@@ -78,6 +79,34 @@ class LeaderboardView : View() {
                     } else Color.WHITESMOKE
                 }
             }
+        }
+    }
+
+    override fun onDock() {
+        super.onDock()
+        resetPlayerList()
+    }
+
+    private fun resetPlayerList() {
+        playersList.items.clear()
+        val players = gameController.players
+
+        for (i in 0 until players.size) {
+            playersList.items.add(
+                hbox {
+                    pane {
+                        alignment = Pos.BASELINE_LEFT
+                        prefWidth = 110.0
+                        label(players[i].name) {
+                            padding = Insets(0.0, 0.0, 0.0, 10.0)
+                        }
+                    }
+                    pane {
+                        alignment = Pos.BASELINE_LEFT
+                        label(players[i].score.toString())
+                    }
+                }
+            )
         }
     }
 }

@@ -4,11 +4,10 @@ import javafx.scene.paint.Color
 import patrik07.snake.model.game.gameobject.GameObject
 import patrik07.snake.model.game.gameobject.gameobjects.Part
 import patrik07.snake.view.game.common.tile.Tile
-import kotlin.math.max
 
 class PartTile : Tile() {
     companion object {
-        private var index = 1
+        var index = 1
     }
 
     init {
