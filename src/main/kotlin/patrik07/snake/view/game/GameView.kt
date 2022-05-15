@@ -118,9 +118,12 @@ class GameView : View() {
             ) {
                 if (it.text == "Yes") {
                     gameController.resetGame()
-                    val v = find<GameOverView>()
-                    if (v.isDocked)
-                        v.close()
+                    val noSaveView = find<NoSaveView>()
+                    if (noSaveView.isDocked)
+                        noSaveView.close()
+                    val saveView = find<SaveView>()
+                    if (saveView.isDocked)
+                        saveView.close()
                     GameOverView.isOpened = false
                     timeline.stop()
                     currentWindow?.hide()

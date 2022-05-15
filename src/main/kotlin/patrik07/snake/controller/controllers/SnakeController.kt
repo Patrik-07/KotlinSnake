@@ -21,22 +21,22 @@ class SnakeController : Controller() {
         when (keyEvent.code) {
             KeyCode.W, KeyCode.UP -> {
                 if (Snake.direction != Direction.DOWN) {
-                    Snake.direction = Direction.UP
+                    Snake.nextDirection = Direction.UP
                 }
             }
             KeyCode.A, KeyCode.LEFT -> {
                 if (Snake.direction != Direction.RIGHT) {
-                    Snake.direction = Direction.LEFT
+                    Snake.nextDirection = Direction.LEFT
                 }
             }
             KeyCode.S, KeyCode.DOWN -> {
                 if (Snake.direction != Direction.UP) {
-                    Snake.direction = Direction.DOWN
+                    Snake.nextDirection = Direction.DOWN
                 }
             }
             KeyCode.D, KeyCode.RIGHT -> {
                 if (Snake.direction != Direction.LEFT) {
-                    Snake.direction = Direction.RIGHT
+                    Snake.nextDirection = Direction.RIGHT
                 }
             }
             else -> {}

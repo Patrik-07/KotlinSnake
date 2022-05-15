@@ -10,6 +10,7 @@ class Snake {
 
         var isAlive = true
         var direction: Int = Direction.RIGHT
+        var nextDirection: Int = Direction.RIGHT
 
         const val initialLength = 3
         val length get() = body.size
@@ -57,12 +58,13 @@ class Snake {
                 lastY = currentY
             }
 
-            when (direction) {
+            when (nextDirection) {
                 Direction.UP -> body[0].x--
                 Direction.LEFT -> body[0].y--
                 Direction.DOWN -> body[0].x++
                 Direction.RIGHT -> body[0].y++
             }
+            direction = nextDirection
 
             Map[body[0].x, body[0].y].collideWithSnake()
         }
